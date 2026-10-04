@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorShopMobile.Views.NuevoProductoPage"
+             Title="Nuevo producto">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="6">
+
+            <Label x:Name="LblInstrucciones"
+                   Text="Completa los datos del producto. Los campos con * son obligatorios."
+                   FontSize="13" TextColor="Gray" Margin="0,0,0,8" />
+
+            <!-- Nombre -->
+            <Label Text="Nombre *" FontSize="13" TextColor="Gray" />
+            <Entry x:Name="EntryNombre" Placeholder="Ej.: Licuadora 3 velocidades"
+                   MaxLength="60" ReturnType="Next" TextChanged="OnCampoCambiado" />
+            <Label x:Name="LblErrorNombre" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <!-- Precio y stock en la misma fila para un formulario más corto -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="16" Margin="0,10,0,0">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Precio (USD) *" FontSize="13" TextColor="Gray" />
+                    <Entry x:Name="EntryPrecio" Placeholder="Ej.: 25.50" Keyboard="Numeric"
+                           TextChanged="OnCampoCambiado" />
+                    <Label x:Name="LblErrorPrecio" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="Stock inicial *" FontSize="13" TextColor="Gray" />
+                    <Entry x:Name="EntryStock" Placeholder="Ej.: 10" Keyboard="Numeric"
+                           TextChanged="OnCampoCambiado" />
+                    <Label x:Name="LblErrorStock" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <!-- Categoría -->
+            <Grid ColumnDefinitions="*,Auto" Margin="0,10,0,0">
+                <Label Grid.Column="0" Text="Categoría *" FontSize="13" TextColor="Gray"
+                       VerticalOptions="Center" />
+                <!-- Permite crear una categoría sin salir del formulario -->
+                <Button Grid.Column="1" x:Name="BtnNuevaCategoria" Text="+ Nueva categoría"
+                        Clicked="OnNuevaCategoriaClicked" BackgroundColor="Transparent"
+                        TextColor="{StaticResource Primary}" FontSize="13" Padding="0" />
+            </Grid>
+            <Picker x:Name="PickerCategoria" Title="Selecciona una categoría"
+                    SelectedIndexChanged="OnCampoCambiado" />
+            <Label x:Name="LblEstadoCategorias" FontSize="12" TextColor="Gray" IsVisible="False" />
+            <Button x:Name="BtnReintentarCategorias" Text="Reintentar cargar categorías"
+                    Clicked="OnReintentarCategoriasClicked" IsVisible="False"
+                    BackgroundColor="Transparent" TextColor="{StaticResource Primary}"
+                    FontSize="13" Padding="0" HorizontalOptions="Start" />
+            <Label x:Name="LblErrorCategoria" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <Button x:Name="BtnGuardar" Text="Guardar producto" Clicked="OnGuardarClicked" Margin="0,24,0,0" />
+            <Button x:Name="BtnCancelar" Text="Cancelar" Clicked="OnCancelarClicked"
+                    BackgroundColor="Transparent" TextColor="#5F5E5A" />
+            <ActivityIndicator x:Name="Cargando" IsVisible="False" IsRunning="False" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

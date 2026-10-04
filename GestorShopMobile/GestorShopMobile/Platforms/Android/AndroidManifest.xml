@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:allowBackup="true"
+                 android:icon="@mipmap/appicon"
+                 android:roundIcon="@mipmap/appicon_round"
+                 android:supportsRtl="true"
+                 android:networkSecurityConfig="@xml/network_security_config"></application>
+
+    <!-- Internet: obligatorio para consumir GestorShopAPI -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Cámara: adjuntar evidencia fotográfica de la entrega (RegistrarVentaPage) -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Android 11+ (visibilidad de paquetes): sin este bloque la app no puede
+         "ver" la aplicación de cámara del sistema y MediaPicker.CapturePhotoAsync()
+         falla con "android.media.action.IMAGE_CAPTURE was not added to <queries>". -->
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
+    <!-- Ubicación: registrar el punto de entrega de la venta (opcional) -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Deliberadamente NO se declara acceso a la galería completa
+         (READ_MEDIA_IMAGES / READ_EXTERNAL_STORAGE): la app usa el selector
+         del sistema (MediaPicker), que no requiere ese permiso, tal como
+         recomienda el taller para no bloquear la publicación en Play Store. -->
+</manifest>

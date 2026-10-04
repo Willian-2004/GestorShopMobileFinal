@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorShopMobile.Views.PerfilPage"
+             Title="Perfil">
+    <VerticalStackLayout Padding="24" Spacing="10">
+        <Label x:Name="LblUsuario" FontSize="20" FontAttributes="Bold" />
+        <Label x:Name="LblRol" FontSize="14" TextColor="Gray" />
+
+        <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,16" />
+
+        <Label Text="URL del backend (solo para pruebas en dispositivo físico)" FontSize="13" TextColor="Gray" />
+        <Entry x:Name="EntryApiUrl" Placeholder="http://192.168.1.100:5164" />
+        <Button Text="Guardar URL" Clicked="OnGuardarUrlClicked" />
+
+        <Button Text="Cerrar sesión" Clicked="OnCerrarSesionClicked"
+                BackgroundColor="#A32D2D" Margin="0,24,0,0" />
+    </VerticalStackLayout>
+</ContentPage>

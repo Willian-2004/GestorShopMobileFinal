@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Autoriza trafico HTTP sin cifrar UNICAMENTE hacia los hosts usados durante
+  el desarrollo local (emulador y red LAN tipica). El resto del trafico del
+  sistema sigue exigiendo HTTPS por defecto (cleartextTrafficPermitted no se
+  declara a nivel global).
+
+  IMPORTANTE: este archivo debe eliminarse (o restringirse a la IP real del
+  servidor de produccion con HTTPS) antes de cualquier distribucion publica,
+  tal como recomienda el taller de Semana 9.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="true">192.168.1.100</domain>
+    </domain-config>
+</network-security-config>

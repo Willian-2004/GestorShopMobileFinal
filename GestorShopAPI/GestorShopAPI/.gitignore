@@ -1,0 +1,16 @@
+# Compilación
+bin/
+obj/
+*.user
+.vs/
+.vscode/
+
+# Secretos locales (NO subir): ver appsettings.Development.example.json
+appsettings.Development.json
+appsettings.*.local.json
+.env
+
+# Base de datos local de desarrollo (contiene datos y hashes de usuarios)
+*.db
+*.db-shm
+*.db-wal

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorShopMobile.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="8" VerticalOptions="Center">
+
+            <Label Text="GestorShop" FontSize="28" HorizontalOptions="Center" Margin="0,0,0,24" />
+
+            <Label Text="Usuario" FontSize="13" TextColor="Gray" />
+            <Entry x:Name="EntryUsuario" Placeholder="admin" />
+            <Label x:Name="LblErrorUsuario" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <Label Text="Contraseña" FontSize="13" TextColor="Gray" Margin="0,8,0,0" />
+            <Entry x:Name="EntryPassword" Placeholder="••••••••" IsPassword="True" />
+            <Label x:Name="LblErrorPassword" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <Label x:Name="LblErrorGeneral" TextColor="#A32D2D" FontSize="13"
+                   IsVisible="False" Margin="0,8,0,0" HorizontalOptions="Center" />
+
+            <Button x:Name="BtnIngresar" Text="Ingresar" Clicked="OnIngresarClicked" Margin="0,20,0,0" />
+            <ActivityIndicator x:Name="Cargando" IsVisible="False" IsRunning="False" />
+
+            <!-- Servidor actual: permite corregir la URL SIN iniciar sesión
+                 (antes solo se podía cambiar desde Perfil, que requiere login) -->
+            <Label x:Name="LblServidor" FontSize="11" TextColor="Gray"
+                   HorizontalTextAlignment="Center" Margin="0,16,0,0" />
+            <Button Text="Configurar servidor" Clicked="OnConfigurarServidorClicked"
+                    BackgroundColor="Transparent" TextColor="{StaticResource Primary}"
+                    FontSize="13" Padding="0" />
+
+            <Label Text="Este proyecto no permite autorregistro: los usuarios son creados por un administrador desde el backend (ver justificación en el README)."
+                   FontSize="11" TextColor="Gray" Margin="0,24,0,0" HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

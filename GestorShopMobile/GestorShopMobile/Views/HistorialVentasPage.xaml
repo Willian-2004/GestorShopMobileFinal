@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:GestorShopMobile.Models"
+             x:Class="GestorShopMobile.Views.HistorialVentasPage"
+             Title="Historial"
+             BackgroundColor="#F4F6F5">
+
+    <!-- Deslizar hacia abajo recarga el historial -->
+    <RefreshView x:Name="Refrescar" Refreshing="OnRefrescando">
+        <CollectionView x:Name="ListaVentas" SelectionMode="None">
+
+            <!-- Resumen: da contexto rápido antes de ver el detalle -->
+            <CollectionView.Header>
+                <Grid Padding="16,16,16,4" ColumnDefinitions="*,*" ColumnSpacing="12">
+                    <Border Grid.Column="0" BackgroundColor="White" Stroke="Transparent"
+                            StrokeShape="RoundRectangle 12" Padding="14,12">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Ventas" FontSize="12" TextColor="Gray" />
+                            <Label x:Name="LblCantidadVentas" Text="0" FontSize="22" FontAttributes="Bold" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Column="1" BackgroundColor="{StaticResource Primary}" Stroke="Transparent"
+                            StrokeShape="RoundRectangle 12" Padding="14,12">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="Total vendido" FontSize="12" TextColor="#D5EFE7" />
+                            <Label x:Name="LblTotalVendido" Text="$0.00" FontSize="22"
+                                   FontAttributes="Bold" TextColor="White" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+            </CollectionView.Header>
+
+            <!-- Estado vacío con instrucción clara de qué hacer -->
+            <CollectionView.EmptyView>
+                <VerticalStackLayout Padding="32,48" Spacing="8" HorizontalOptions="Center">
+                    <Label Text="🧾" FontSize="40" HorizontalOptions="Center" />
+                    <Label Text="Aún no hay ventas registradas" FontSize="16"
+                           FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="Registra tu primera venta desde la pestaña «Nueva venta». Desliza hacia abajo para actualizar."
+                           FontSize="13" TextColor="Gray" HorizontalTextAlignment="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:VentaDto">
+                    <Border Margin="16,6" Padding="14,12" BackgroundColor="White"
+                            Stroke="Transparent" StrokeShape="RoundRectangle 12">
+                        <VerticalStackLayout Spacing="4">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="{Binding Cliente}" FontSize="16"
+                                       FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                                <Label Grid.Column="1" Text="{Binding Total, StringFormat='${0:0.00}'}"
+                                       FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Primary}" />
+                            </Grid>
+                            <Grid ColumnDefinitions="*,Auto">
+                                <Label Grid.Column="0" Text="{Binding FechaLocal}" FontSize="12" TextColor="Gray" />
+                                <Label Grid.Column="1" Text="{Binding Numero}" FontSize="12" TextColor="Gray" />
+                            </Grid>
+                            <BoxView HeightRequest="1" BackgroundColor="#E6E8E7" Margin="0,6" />
+                            <Label Text="{Binding ResumenProductos}" FontSize="13" TextColor="#3A3A3A" />
+                            <Label Text="{Binding TotalUnidades, StringFormat='{0} unidad(es)'}"
+                                   FontSize="12" TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.Footer>
+                <BoxView HeightRequest="16" Color="Transparent" />
+            </CollectionView.Footer>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

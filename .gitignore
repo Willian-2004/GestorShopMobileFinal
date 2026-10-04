@@ -1,0 +1,30 @@
+# Este repositorio incluye SOLO el proyecto final GestorShop.
+# Se ignora todo lo demás de la carpeta del curso (otras semanas, .zip, etc.).
+/*
+!/.gitignore
+!/README.md
+!/GestorShopAPI/
+!/GestorShopMobile/
+
+# Compilación
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.tmp
+
+# Secretos locales del backend (NO subir) — ver appsettings.Development.example.json
+appsettings.Development.json
+.env
+
+# Base de datos local y registros
+*.db
+*.db-shm
+*.db-wal
+log*.txt
+
+# Archivos de apoyo que no son código
+*.docx
+*.pdf
+Claude outputs/

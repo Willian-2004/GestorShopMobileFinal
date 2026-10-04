@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GestorShopMobile.Views.RegistrarVentaPage"
+             Title="Nueva venta">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="6">
+
+            <Label Text="Cliente" FontSize="13" TextColor="Gray" />
+            <Entry x:Name="EntryCliente" Placeholder="Nombre del cliente" TextChanged="OnCampoCambiado" />
+            <Label x:Name="LblErrorCliente" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <Label Text="Producto" FontSize="13" TextColor="Gray" Margin="0,10,0,0" />
+            <Picker x:Name="PickerProducto" Title="Seleccione un producto" SelectedIndexChanged="OnCampoCambiado" />
+            <Label x:Name="LblErrorProducto" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <Label Text="Cantidad" FontSize="13" TextColor="Gray" Margin="0,10,0,0" />
+            <Entry x:Name="EntryCantidad" Placeholder="1" Keyboard="Numeric" TextChanged="OnCampoCambiado" />
+            <Label x:Name="LblErrorCantidad" TextColor="#A32D2D" FontSize="12" IsVisible="False" />
+
+            <BoxView HeightRequest="1" BackgroundColor="LightGray" Margin="0,16" />
+
+            <Label Text="Evidencia de despacho (capacidades nativas)" FontAttributes="Bold" />
+
+            <Button x:Name="BtnFoto" Text="Tomar foto de evidencia" Clicked="OnTomarFotoClicked" Margin="0,8,0,0" />
+            <Image x:Name="ImgEvidencia" HeightRequest="160" Aspect="AspectFit" IsVisible="False" Margin="0,8,0,0" />
+            <Label x:Name="LblEstadoFoto" FontSize="12" TextColor="Gray" />
+
+            <Button x:Name="BtnUbicacion" Text="Capturar punto de entrega" Clicked="OnCapturarUbicacionClicked" Margin="0,12,0,0" />
+            <Label x:Name="LblEstadoUbicacion" FontSize="12" TextColor="Gray" />
+
+            <Button x:Name="BtnAjustes" Text="Abrir ajustes de la app" Clicked="OnAbrirAjustesClicked"
+                    IsVisible="False" BackgroundColor="#5F5E5A" Margin="0,4,0,0" />
+
+            <Button x:Name="BtnGuardar" Text="Registrar venta" Clicked="OnGuardarClicked" Margin="0,24,0,0" />
+            <ActivityIndicator x:Name="Cargando" IsVisible="False" IsRunning="False" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
